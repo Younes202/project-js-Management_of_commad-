@@ -60,7 +60,7 @@
                 </tbody>
             </table>
             <hr>
-	<table id="table_produit" class="table table-hover">
+	<table id="table_product" class="table table-hover">
              <thead>
                     <th id="id">Id</th>
                     <th id="designation">Designation</th>
@@ -99,7 +99,7 @@
               $("#conten").append("<tr>"
                 +"<td>"+idd+"</td>"
                 +"<td>"+des+"</td>"
-                +"<td id='my"+idd+"'>"+prix+"</td>"
+                +"<td id='myprice'>"+prix+"</td>"
                 +"<td>"+quantite+"</td>"
                 +"<td>"+(prix * +quantite).toString()+"</td>"
                 +"<td>"+
@@ -111,7 +111,15 @@
             });
             function plus(a)
             {
-               
+                let table = document.getElementById("table_product");
+                q = table.rows[a+1].cells[3].innerHTML++;
+                $('#qte').val=q;
+                prix = $('#prix').val();
+                table.rows[a+1].cells[4].innerHTML=prix*table.rows[a+1].cells[3].innerHTML;
+              
+	
+            
+         
             }
             function minus(a)
             {
