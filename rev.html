@@ -80,16 +80,16 @@
         </div>
         <button id='totalprice' class='btn btn-primary'>
             validate the order</button>
-        <input type="text" placeholder='Price commande' class='form-control' id='total'>
-        <input type="text" placeholder='
-        Rising input' class='form-control' id='donner'>
+            <input type="number" id="total" value="0" disabled/>
+        <input type="text" placeholder='Rising input' class='form-control' id='donner'>
         <br><br>
         <button id='validate' class='btn btn-primary'>Total Due</button>
-        <input type="text" id='back' class='form-control' >
+        
+        
     </div>
     </body>
     <script>
-
+            const table = document.getElementById("table_product");
             $("#bto").click(function (){
               const des = $("#des").val();
               const prix = $("#prix").val();  
@@ -111,28 +111,46 @@
             });
             function plus(a)
             {
-                let table = document.getElementById("table_product");
+               
                 q = table.rows[a+1].cells[3].innerHTML++;
                 $('#qte').val=q;
                 prix = $('#prix').val();
-                table.rows[a+1].cells[4].innerHTML=prix*table.rows[a+1].cells[3].innerHTML
-         
+                 table.rows[a+1].cells[4].innerHTML=prix*table.rows[a+1].cells[3].innerHTML;
+                 let sum=0;
+               
+                
             }
             function minus(a)
             {
-                let table = document.getElementById("table_product");
+               
                 q = table.rows[a+1].cells[3].innerHTML--;
                 $('#qte').val=q;
                 prix = $('#prix').val();
-                table.rows[a+1].cells[4].innerHTML=prix*table.rows[a+1].cells[3].innerHTML
+                table.rows[a+1].cells[4].innerHTML=prix*table.rows[a+1].cells[3].innerHTML;
             }
-            
+            $("#totalprice").click(function(){
+                let table = document.getElementById("table_product");
+               
                 
-            
-     
+            });
+
+   
+                let a=0;
+               $("#totalprice").click(function(){    
+                let taille = table.rows.length-1;
+                let i = 1;
+                let sum=0;
+                do{
+                    sum+=parseFloat(table.rows[i].cells[4].innerHTML);
+                    i++;
+                    
+                }
+                while(taille>=i); 
+                alert(sum);
+                });            
+
         
-      
-        
+  
         </script>
         </html>
         
