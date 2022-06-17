@@ -14,24 +14,25 @@
             <h1>Management of commande</h1>
             <ul class="nav nav-tabs">
                 <li class="nav-item active">
-                    <a class="nav-link active" data-toogle="tabs" href="#home">Command</a>
+                         <a class="nav-link active" data-toogle="tabs" href="#home">Command</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="menu1" data-toogle="tabs" >Clients</a>
+                         <a class="nav-link" href="menu1" data-toogle="tabs" >Clients</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="menu2" data-toogle="tabs">Activites</a>
+                         <a class="nav-link" href="menu2" data-toogle="tabs">Activites</a>
                 </li>
             </ul>
-            <hr>
+        <hr>
            
-		 <table class="table table-hover">
-                <thead>
+	 <table class="table table-hover">
+         <tbody>
                     <div class="tab-content" class="tab-pane fade active show ">
                     <div id="home">
+                        <div class="jumbotron">
                         <h5> <img src="images/cont.png" id="image">Add product</h5>
                     </div>
-                    <tr>
+                <tr>
                       <td>
                           <div class="form-group">
                               <input type="txt" placeholder="Write your designation" id="des" class="form-control" >
@@ -50,42 +51,37 @@
                       <td>
                          <button type="submit" id="bto" class="btn  btn-primary btn-sm" >Add</button>
                       </td>
-                    </tr>
-                    </div>
-</div>
-
-                </thead>
-                <tbody>
-
-                </tbody>
-            </table>
+                </tr>
+                </div>
+         <tbody>
+     </tbody>
+    </table>
             <hr>
-	<table id="table_product" class="table table-hover">
+    <table id="table_product" class="table table-hover">
              <thead>
-                    <th id="id">Id</th>
-                    <th id="designation">Designation</th>
-                    <th id="prix">Price</th>
-                    <th>Amount</th>
-                    <th>Total</th>
-                    <th>Options</th>
+                    <th scope="col" >Id</th>
+                    <th scope="col">Designation</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Options</th>
                 </thead>
-                	
-	 <tbody id="conten"></tbody>	
-</table>
-<hr>
-<br>
-<div id='menu1' class='tab-pane fade'></div>
+	        <tbody id="conten"></tbody>	
+    </table>
+            <hr>
+            <br>
+            <div id='menu1' class='tab-pane fade'></div>
             <div id='menu2' class='tab-pane fade'></div>
             <div id='menu3' class='tab-pane fade'></div>
-        </div>
-        <button id='totalprice' class='btn btn-primary'>
-            validate the order</button>
-            <input type="number" id="total" value="0" disabled/>
-        <input type="text" placeholder='Rising input' class='form-control' id='donner'>
-        <br><br>
-        <button id='validate' class='btn btn-primary'>Total Due</button>
-        
-        
+      
+            <button id='totalprice' class='btn btn-primary'>validate the order</button>
+            <input type="number" id="total" value="0" class="form-control" disabled/>
+            <input type="text" placeholder='Rising input' class='form-control' id='input_rising'>
+            <br><br>
+            <button id='validate' class='btn btn-primary'>
+                Total to be returned</button>
+            <input type="text" placeholder='Total return' class='form-control' id='pay'>
+
     </div>
     </body>
     <script>
@@ -103,38 +99,26 @@
                 +"<td>"+quantite+"</td>"
                 +"<td>"+(prix * +quantite).toString()+"</td>"
                 +"<td>"+
-                    "<button class='btn btn-primary plus' onclick='plus("+idd+")'>+</button>"+
-                    "<button class='btn btn-danger minus' onclick='minus("+idd+")'>-</button>"
-                    +"</td>"+
-                    
+                "<button class='btn btn-primary plus' onclick='plus("+idd+")'>+</button>"+
+                "<button class='btn btn-danger minus' onclick='minus("+idd+")'>-</button>"
+                +"</td>"+  
                 "</tr>");
             });
             function plus(a)
             {
-               
-                q = table.rows[a+1].cells[3].innerHTML++;
-                $('#qte').val=q;
-                prix = $('#prix').val();
+                 q = table.rows[a+1].cells[3].innerHTML++;
+                 $('#qte').val=q;
+                 prix = $('#prix').val();
                  table.rows[a+1].cells[4].innerHTML=prix*table.rows[a+1].cells[3].innerHTML;
-                 let sum=0;
-               
-                
+                 let sum=0;     
             }
             function minus(a)
             {
-               
                 q = table.rows[a+1].cells[3].innerHTML--;
                 $('#qte').val=q;
                 prix = $('#prix').val();
                 table.rows[a+1].cells[4].innerHTML=prix*table.rows[a+1].cells[3].innerHTML;
             }
-            $("#totalprice").click(function(){
-                let table = document.getElementById("table_product");
-               
-                
-            });
-
-   
                 let a=0;
                $("#totalprice").click(function(){    
                 let taille = table.rows.length-1;
@@ -143,13 +127,20 @@
                 do{
                     sum+=parseFloat(table.rows[i].cells[4].innerHTML);
                     i++;
-                    
-                }
-                while(taille>=i); 
-                alert(sum);
+                }while(taille>=i); 
+                const input = document.getElementById("total");
+                input.value=sum;
                 });            
-
-        
+                $("#validate").click(function(){
+                    const rising = $("#input_rising").val();
+                    tot = $("#total").val();
+                    let new_val = -(+tot - +rising).toString();
+                    const input = document.getElementById("pay");
+                    input.value=new_val;
+                    
+                    
+                });
+       
   
         </script>
         </html>
