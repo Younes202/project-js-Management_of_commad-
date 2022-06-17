@@ -115,15 +115,16 @@
                 q = table.rows[a+1].cells[3].innerHTML++;
                 $('#qte').val=q;
                 prix = $('#prix').val();
-                table.rows[a+1].cells[4].innerHTML=prix*table.rows[a+1].cells[3].innerHTML;
-              
-	
-            
+                table.rows[a+1].cells[4].innerHTML=prix*table.rows[a+1].cells[3].innerHTML
          
             }
             function minus(a)
             {
-                
+                let table = document.getElementById("table_product");
+                q = table.rows[a+1].cells[3].innerHTML--;
+                $('#qte').val=q;
+                prix = $('#prix').val();
+                table.rows[a+1].cells[4].innerHTML=prix*table.rows[a+1].cells[3].innerHTML
             }
             
                 
