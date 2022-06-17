@@ -91,32 +91,8 @@
     <script>
   
 
-            $().ready(function(){ 
-            $("#bto").click(function (){
-              let des = $("#des").val();
-              let prix = $("#prix").val();  
-              let quantite = $("#qte").val();
-              let tb = $("#content").append("<tr>"
-                +"<td>"+Nextid()+"</td>"
-                +"<td>"+des+"</td>"
-                +"<td>"+prix+"</td>"
-                +"<td>"+quantite+"</td>"
-                +"<td>"+(prix * +quantite).toString()+"</td>"
-                +"<td>"+
-                    "<button class='btn btn-primary plus' onclick='minus("+this+")>+</button>"+
-                    "<button class='btn btn-danger minus' onclick='plus("+this+")>-</button>"
-                    +"</td>"+
-                    
-                
-                "</tr>");
-           
-              
              
-             
-            });
-                
-           });
-            
+         
      
         
       
