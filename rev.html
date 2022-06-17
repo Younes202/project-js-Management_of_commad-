@@ -11,7 +11,7 @@
 	<script src='rev.js'></script>
 	
         <div class="container">
-            <h1>Gestion commandes</h1>
+            <h1>Management of commande</h1>
             <ul class="nav nav-tabs">
                 <li class="nav-item active">
                     <a class="nav-link active" data-toogle="tabs" href="#home">Command</a>
@@ -70,7 +70,7 @@
                     <th>Options</th>
                 </thead>
                 	
-	 <tbody id="content"></tbody>	
+	 <tbody id="conten"></tbody>	
 </table>
 <hr>
 <br>
@@ -89,10 +89,37 @@
     </div>
     </body>
     <script>
-  
 
-             
-         
+            $("#bto").click(function (){
+              const des = $("#des").val();
+              const prix = $("#prix").val();  
+              const quantite = $("#qte").val();
+           
+              idd = id++;
+              $("#conten").append("<tr>"
+                +"<td>"+idd+"</td>"
+                +"<td>"+des+"</td>"
+                +"<td id='my"+idd+"'>"+prix+"</td>"
+                +"<td>"+quantite+"</td>"
+                +"<td>"+(prix * +quantite).toString()+"</td>"
+                +"<td>"+
+                    "<button class='btn btn-primary plus' onclick='plus("+idd+")'>+</button>"+
+                    "<button class='btn btn-danger minus' onclick='minus("+idd+")'>-</button>"
+                    +"</td>"+
+                    
+                "</tr>");
+            });
+            function plus(a)
+            {
+               
+            }
+            function minus(a)
+            {
+                
+            }
+            
+                
+            
      
         
       
