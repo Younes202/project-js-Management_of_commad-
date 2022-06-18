@@ -11,7 +11,7 @@
 	<script src='rev.js'></script>
 	
         <div class="container">
-            <h1>Management of commande</h1>
+            <h1>Management of command</h1>
             <ul class="nav nav-tabs">
                 <li class="nav-item active">
                          <a class="nav-link active" data-toogle="tabs" href="#home">Command</a>
@@ -65,6 +65,8 @@
                     <th scope="col">Amount</th>
                     <th scope="col">Total</th>
                     <th scope="col">Options</th>
+                    <th scope="col">Processus</th> 
+
                 </thead>
 	        <tbody id="conten"></tbody>	
     </table>
@@ -101,7 +103,11 @@
                 +"<td>"+
                 "<button class='btn btn-primary plus' onclick='plus("+idd+")'>+</button>"+
                 "<button class='btn btn-danger minus' onclick='minus("+idd+")'>-</button>"
-                +"</td>"+  
+                +"</td>" 
+                + "<td>"
+                  +  "<button class='btn btn-danger ' onclick='Delete("+idd+")'>Delete</button>"
+                  +  "<button class='btn btn-primary ' onclick='Modify("+idd+")'>Modifiy</button>"
+                 +"</td>"+
                 "</tr>");
             });
             function plus(a)
@@ -134,14 +140,23 @@
                 $("#validate").click(function(){
                     const rising = $("#input_rising").val();
                     tot = $("#total").val();
-                    let new_val = -(+tot - +rising).toString();
+                    let new_val = (+rising - +tot).toString();
                     const input = document.getElementById("pay");
                     input.value=new_val;
                     
-                    
                 });
-       
-  
+                function Delete(id)
+                {
+                    table.deleteRow(id);
+                  
+                }
+                function Modify(id)
+                {
+                  
+                  
+                }
+
+               
         </script>
         </html>
         
